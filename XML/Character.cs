@@ -2,10 +2,10 @@ using System;
 
 namespace XML
 {
-    public class PowerUp
+    public class Character
     {
-     public int x = 0;
-     public int y = 0;
+     public int weight;
+     public int height;
 
      public string name = ""; 
     

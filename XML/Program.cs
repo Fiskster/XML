@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace XML
@@ -8,24 +9,18 @@ namespace XML
     {
         static void Main(string[] args)
         {
-        //    3 56 90
-        // PowerUp p = new PowerUp();
+            XmlSerializer charSerializer = new XmlSerializer(typeof(Character));
+            Character player = new Character();
 
-        // p.name = "fungi";
-        // p.x = 4; 
-        // p.y = 3; 
+            FileStream file = File.Open(@"char.xml", FileMode.OpenOrCreate);
 
-        XmlSerializer serializer = new XmlSerializer(typeof(PowerUp));
+            charSerializer.Serialize(file, charSerializer);
 
-        FileStream myFile = File.Open("powerup.xml", FileMode.OpenOrCreate);
+            file.Close();
 
-        PowerUp p = (PowerUp) serializer.Deserialize(myFile);
 
-        myFile.Close();
 
-        System.Console.WriteLine(p.name);
 
-        Console.ReadLine();
            
         }
     }
